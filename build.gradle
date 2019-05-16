@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.github.sulir.tostring-study'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+mainClassName = 'com.github.sulir.tostringstudy.Main'
+applicationDefaultJvmArgs = ['-Xms2g', '-Xmx2g', '-XX:MaxMetaspaceSize=512m']
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'fr.inria.gforge.spoon:spoon-core:7.3.0'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
