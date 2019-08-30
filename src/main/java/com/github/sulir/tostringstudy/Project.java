@@ -15,6 +15,7 @@ public class Project {
     private Path source;
     private String[] dependencies;
     private Corpus corpus;
+    private static final String BLACKLIST = "/jspwiki/source/deps/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizerImpl.java";
 
     public Project(Path source, Path dependencies, Corpus corpus) throws IOException {
         this.source = source;
@@ -28,7 +29,7 @@ public class Project {
         Files.walk(source).sorted().forEach(file -> {
             String pathName = file.toString().replace(File.separator, "/");
 
-            if (pathName.endsWith(".java") && !pathName.contains("/test/resources")) {
+            if (pathName.endsWith(".java") && !pathName.contains("/test/resources") && !pathName.endsWith(BLACKLIST)) {
                 CtModel model = buildModel(file, dependencies);
 
                 if (model != null)

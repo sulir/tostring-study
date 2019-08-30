@@ -16,7 +16,8 @@ public class AllQuestions extends Question {
             new Hierarchy(),
             new Calls(),
             new Nodes(),
-            new NullChecks()
+            new SchematicFields(),
+            new Super()
     };
 
     @Override

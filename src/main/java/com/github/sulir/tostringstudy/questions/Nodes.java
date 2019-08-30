@@ -1,12 +1,10 @@
 package com.github.sulir.tostringstudy.questions;
 
+import com.github.sulir.tostringstudy.CodeElement;
 import com.github.sulir.tostringstudy.Occurrences;
 import com.github.sulir.tostringstudy.Question;
 import org.apache.commons.lang3.StringUtils;
-import spoon.reflect.code.CtBlock;
-import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.reference.CtReference;
 
 import java.util.*;
 
@@ -19,7 +17,7 @@ public class Nodes extends Question {
         Set<String> nodeTypes = new HashSet<>();
 
         toString.getBody().filterChildren(element ->
-                !(element instanceof CtBlock || element instanceof CtReference || element instanceof CtTypeAccess)
+                !(new CodeElement(element).isInsignificant())
         ).forEach(element -> {
             String nodeType = element.getClass().getSimpleName();
             nodeTypes.add(StringUtils.removeEnd(StringUtils.removeStart(nodeType, "Ct"), "Impl"));
