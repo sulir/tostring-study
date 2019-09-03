@@ -33,7 +33,8 @@ public class SchematicFields extends Question {
             CtElement elem = iterator.next();
             CodeElement element = new CodeElement(elem);
 
-            if (element.isInsignificant() || elem instanceof CtReturn || elem instanceof CtThisAccess)
+            if (element.isInsignificant() || elem instanceof CtReturn
+                    || elem instanceof CtThisAccess || elem instanceof CtSuperAccess)
                 continue;
 
             if (elem instanceof CtLiteral && (element.isString() || element.isNull()))
